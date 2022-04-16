@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use("/api", apiRoutes);
-app.use("/api", htmlRoutes);
+app.use("/", hmtlRoutes);
 
 // Sart the server on the port
 app.listen(PORT, () => console.log(`Listening on PORT: ${PORT}`));

@@ -1,11 +1,16 @@
-const express = require('express');
+const router = require("express").Router();
+const storeData = require("../db/storeData");
+
+router.get("/notes",(req, res)=>{ 
+  storeData
+  .getNotes()
+  .then((notes)=>{
+    return res.json(notes);
+  })
+  .catch((err)=> res.status(500).json(err));
+});
+router.post("/notes");
+router.delete();
 
 
-
-
-
-
-
-app.listen(3001, () => {
-    console.log(`API server now on port 3001!`);
-  });
+module.exports = router;

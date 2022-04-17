@@ -1,6 +1,4 @@
 const fs = require("fs");
-const { get } = require("http");
-const { getEnabledCategories } = require("trace_events");
 const util = require("util");
 const uuid = require("uuid");
 const readFileData = util.promisify(fs.readFile);
@@ -15,7 +13,7 @@ class StoreData {
     return writeFileData("db/db.json", JSON.stringify(note));
   }
 
-  // review this later
+  
   getNotes() {
     return this.read().then((notes) => {
       let jsonNotes;
@@ -42,7 +40,7 @@ class StoreData {
 
   removeNote(id) {
     return this.getNotes()
-      .then((notes) => notes.filter((notes) => note.id !== id))
+      .then((notes) => notes.filter((note) => note.id !== id))
       .then((filterNotes) => this.write(filterNotes));
   }
 }

@@ -9,8 +9,20 @@ router.get("/notes",(req, res)=>{
   })
   .catch((err)=> res.status(500).json(err));
 });
-router.post("/notes");
-router.delete();
+router.post("/notes",(req, res)=>{
+  storeData
+ .addNote()
+ .then(notes)
+ {
+   return res.json(notes);
+ }
+});
+router.delete("/notes/: id", (req, res)=>{
+  storeData
+  .removeNote()
+
+  return res.json(notes)
+});
 
 
 module.exports = router;

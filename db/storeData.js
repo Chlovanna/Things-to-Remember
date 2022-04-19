@@ -1,6 +1,8 @@
+
 const fs = require("fs");
 const util = require("util");
-const uuid = require("uuid");
+// const uuid = require("uuid");
+const { uuid }= require("uuidv4");
 const readFileData = util.promisify(fs.readFile);
 const writeFileData = util.promisify(fs.writeFile);
 
@@ -31,7 +33,7 @@ class StoreData {
     if (!title || !text) {
       throw new Error("NO BLANK!");
     }
-    const newNote = { title, text, id: uuidv1() };
+    const newNote = { title, text, id: uuid() };
     return this.getNotes()
       .then((notes) => [...notes, newNote])
       .then((updtedNotes) => this.write(updtedNotes))
